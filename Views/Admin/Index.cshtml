@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProjeKamp.Models.Admin>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AdminName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdminLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdminEmail)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminEmail)
+            </td>
+
+            <td>
+                <a asp-action="Details" asp-route-id="@item.AdminId">Details</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
