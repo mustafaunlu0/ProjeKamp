@@ -19,9 +19,21 @@ namespace ProjeKamp.Controllers
             _context = context;
         }
 
-        public IActionResult SignUpDeneme()
+        public IActionResult SignUp()
         {
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SignUp([Bind("UserId,UserName,UserLastName,UserEmail,UserPassword")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(user);
         }
         public IActionResult LoginDeneme()
         {

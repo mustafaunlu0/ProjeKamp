@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model ProjeKamp.Models.User
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,22 +20,31 @@
     	    <div class="col-xs-12">
         	    <div class="form-wrap">
                 <h1>Formu doldur ve aramıza katıl!</h1>
-                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+                    <form role="form" asp-action="SignUpDeneme" id="login-form" autocomplete="off">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
-                            <label for="ad" class="sr-only">Ad</label>
-                            <input type="text" name="ad" id="ad" class="form-control" placeholder="Ad">
+                            <label asp-for="UserName" class="sr-only">Ad</label>
+                            <input asp-for="UserName" type="text"  class="form-control" placeholder="Ad">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+
                         </div>
                         <div class="form-group">
-                            <label for="soyad" class="sr-only">Soyad</label>
-                            <input type="text" name="soyad" id="soyad" class="form-control" placeholder="Soyad">
+                            <label asp-for="UserLastName"  class="sr-only">Soyad</label>
+                            <input  asp-for="UserLastName" type="text"  class="form-control" placeholder="Soyad">
+                            <span asp-validation-for="UserLastName" class="text-danger"></span>
+
                         </div>
                         <div class="form-group">
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                            <label asp-for="UserEmail"  class="sr-only">Email</label>
+                            <input asp-for="UserEmail" type="email"  class="form-control" placeholder="somebody@example.com">
+                            <span asp-validation-for="UserEmail" class="text-danger"></span>
+
                         </div>
                         <div class="form-group">
-                            <label for="key" class="sr-only">Password</label>
-                            <input type="password" name="key" id="key" class="form-control" placeholder="Password">
+                            <label asp-for="UserPassword" for="key" class="sr-only">Password</label>
+                            <input asp-for="UserPassword" type="password"  class="form-control" placeholder="Password">
+                            <span asp-validation-for="UserPassword" class="text-danger"></span>
+
                         </div>
                         <div class="checkbox">
                             <span class="character-checkbox" onclick="showPassword()"></span>
