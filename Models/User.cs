@@ -25,5 +25,7 @@ namespace ProjeKamp.Models
         [Required(ErrorMessage = "Şifre Alanı Zorunludur")]
         [StringLength(15)]
         public string UserPassword { get; set; }
+
+        public int RoleId { get; set; }
     }
 }

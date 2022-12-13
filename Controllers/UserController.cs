@@ -37,12 +37,30 @@ namespace ProjeKamp.Controllers
         }
         public IActionResult LoginDeneme()
         {
+
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult LoginDeneme(string email,string key)
+        {
+            Console.WriteLine("password: "+ key);
+
+            foreach ( var item in _context.Users)
+            {
+                Console.WriteLine(item.UserEmail);
+                if (item.UserEmail.ToString() == email && item.UserPassword.ToString() == key)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            }
             return View();
         }
 
         // GET: User
         public async Task<IActionResult> Index()
         {
+
               return View(await _context.Users.ToListAsync());
         }
 
