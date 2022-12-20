@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+
+      <title>Proje Kamp - Create Camp</title>
+
+      <!-- Custom fonts for this template-->
+      <link
+        href="vendor/fontawesome-free/css/all.min.css"
+        rel="stylesheet"
+        type="text/css"
+      />
+      <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet"
+      />
+
+      <!-- Custom styles for this template-->
+      <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
+
+      <script src="~/js/panel/header/header.js"></script>
+      <script src="~/js/panel/sidebar/sidebar.js"></script>
+      <script src="~/js/panel/footer/footer.js"></script>
+    </head>
+  </head>
+  <body id="page-top">
+    <div id="wrapper">
+      <my-sidebar></my-sidebar>
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <my-Header></my-Header>
+
+          <div class="container-fluid">
+            <form>
+              <div class="row">
+                <div class="col-6">
+                  <label for="campName">Kamp Adı</label>
+                  <input
+                    type="text"
+                    id="campName"
+                    class="form-control mb-3"
+                    placeholder="Kamp Adı"
+                  />
+                </div>
+
+                <div class="col-6">
+                  <label for="campWhere">Neresinde</label>
+                  <input
+                    type="text"
+                    id="campWhere"
+                    class="form-control mb-3"
+                    placeholder="Neresinde"
+                  />
+                </div>
+
+                <div class="col-6">
+                  <label for="city">İl</label>
+                  <select id="city" class="form-control mb-3"></select>
+                </div>
+
+                <div class="col-6">
+                  <label for="district">İlçe</label>
+                  <select id="district" class="form-control mb-3"></select>
+                </div>
+
+                <div class="col-6">
+                  <label for="campDate">Tarih</label>
+                  <input type="date" id="campDate" class="form-control mb-3" />
+                </div>
+
+                <div class="col-6">
+                  <label for="campGps">Harita bilgisi</label>
+                  <input
+                    type="text"
+                    id="campGps"
+                    class="form-control mb-3"
+                    placeholder="Harita bilgisi"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label for="myFile">Resim</label>
+                </div>
+                <div class="col-12">
+                  <div class="file-upload mb-3">
+                    <input
+                      class="file-upload__input"
+                      type="file"
+                      name="myFile[]"
+                      id="myFile"
+                      multiple
+                    />
+                    <button class="file-upload__button" type="button">
+                      Choose File(s)
+                    </button>
+                    <span class="file-upload__label"></span>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="description">Detaylı Açıklama</label>
+                  <textarea
+                    class="form-control mb-3"
+                    id="description"
+                    rows="5"
+                  ></textarea>
+                </div>
+
+                <div class="col-12">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ignismyModal">Kaydet</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- End of Main Content -->
+
+        <my-footer></my-footer>
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    
+    <!-- Modal Success -->
+    <div class="modal fade" id="ignismyModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label=""
+            >
+              <span>×</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div class="success-pop">
+              <img
+                src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png"
+                alt=""
+              />
+              <h1>Kamp Oluşturuldu</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Select "Logout" below if you are ready to end your current session.
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/js/panel/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/js/panel/demo/chart-area-demo.js"></script>
+    <script src="~/js/panel/demo/chart-pie-demo.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+  </body>
+</html>

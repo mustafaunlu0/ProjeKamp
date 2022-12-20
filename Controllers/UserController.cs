@@ -27,6 +27,7 @@ namespace ProjeKamp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp([Bind("UserId,UserName,UserLastName,UserEmail,UserPassword")] User user)
         {
+            user.RoleId = 2;
             if (ModelState.IsValid)
             {
                 _context.Add(user);
@@ -44,13 +45,17 @@ namespace ProjeKamp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult LoginDeneme(string email,string key)
         {
-            Console.WriteLine("password: "+ key);
+
 
             foreach ( var item in _context.Users)
             {
                 Console.WriteLine(item.UserEmail);
                 if (item.UserEmail.ToString() == email && item.UserPassword.ToString() == key)
                 {
+                    if (item.RoleId == 1)
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                     return RedirectToAction(nameof(Index));
                 }
             }

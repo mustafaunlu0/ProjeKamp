@@ -65,6 +65,23 @@ namespace ProjeKamp.Migrations
                     b.ToTable("PostDetail");
                 });
 
+            modelBuilder.Entity("ProjeKamp.Models.Role", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("RoleId"));
+
+                    b.Property<string>("RoleDetail")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("Role");
+                });
+
             modelBuilder.Entity("ProjeKamp.Models.User", b =>
                 {
                     b.Property<int>("UserId")

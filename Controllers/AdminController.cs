@@ -13,6 +13,36 @@ namespace ProjeKamp.Controllers
     public class AdminController : Controller
     {
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult ListAdmin()
+        {
+            return View();
+        }
+        public IActionResult ListUser()
+        {
+            return View();
+        }
+        public IActionResult CreateCamp()
+        {
+            return View();
+        }
+        public IActionResult ListCamp()
+        {
+            return View();
+        }
+        public IActionResult GetCampDetails()
+        {
+            return View();
+        }
+
+
+
+
+
 
     }
 }
