@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model ProjeKamp.Models.Post
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <head>
@@ -43,51 +45,60 @@
           <my-Header></my-Header>
 
           <div class="container-fluid">
-            <form>
+            <form asp-action="CreateCamp">
+               <div asp-validation-summary="ModelOnly" class="text-danger"></div>
               <div class="row">
                 <div class="col-6">
                   <label for="campName">Kamp Adı</label>
                   <input
+                    asp-for="PostName"
                     type="text"
                     id="campName"
                     class="form-control mb-3"
                     placeholder="Kamp Adı"
                   />
+                  <span asp-validation-for="PostName" class="text-danger"></span>
                 </div>
-
-                <div class="col-6">
-                  <label for="campWhere">Neresinde</label>
-                  <input
-                    type="text"
-                    id="campWhere"
-                    class="form-control mb-3"
-                    placeholder="Neresinde"
-                  />
-                </div>
-
                 <div class="col-6">
                   <label for="city">İl</label>
-                  <select id="city" class="form-control mb-3"></select>
+                  <select asp-for="PostCity" id="city" class="form-control mb-3"></select>
+                  <span asp-validation-for="PostCity" class="text-danger"></span>
                 </div>
 
                 <div class="col-6">
                   <label for="district">İlçe</label>
-                  <select id="district" class="form-control mb-3"></select>
+                  <select asp-for="PostCounty" id="district" class="form-control mb-3"></select>
+                  <span asp-validation-for="PostCounty" class="text-danger"></span>
                 </div>
 
                 <div class="col-6">
                   <label for="campDate">Tarih</label>
-                  <input type="date" id="campDate" class="form-control mb-3" />
+                  <input  asp-for="PostDate" type="date" id="campDate" class="form-control mb-3" />
+                  <span asp-validation-for="PostDate" class="text-danger"></span>
                 </div>
 
                 <div class="col-6">
-                  <label for="campGps">Harita bilgisi</label>
+                  <label for="campGps">Saat</label>
                   <input
+                    asp-for="PostHour"
                     type="text"
                     id="campGps"
                     class="form-control mb-3"
-                    placeholder="Harita bilgisi"
+                    placeholder="Saat"
                   />
+                  <span asp-validation-for="PostHour" class="text-danger"></span>
+                </div>
+                
+                <div class="col-6">
+                  <label for="campParticipant">Kontenjan</label>
+                  <input
+                    asp-for="NumberOfParticipants"
+                    type="text"
+                    id="campGps"
+                    class="form-control mb-3"
+                    placeholder="50"
+                  />
+                  <span asp-validation-for="NumberOfParticipants" class="text-danger"></span>
                 </div>
 
                 <div class="col-12">
@@ -96,12 +107,14 @@
                 <div class="col-12">
                   <div class="file-upload mb-3">
                     <input
+                      asp-for="PostImage"
                       class="file-upload__input"
                       type="file"
                       name="myFile[]"
                       id="myFile"
                       multiple
                     />
+                    <span asp-validation-for="PostImage" class="text-danger"></span>
                     <button class="file-upload__button" type="button">
                       Choose File(s)
                     </button>
@@ -112,10 +125,12 @@
                 <div class="col-12">
                   <label for="description">Detaylı Açıklama</label>
                   <textarea
+                    asp-for="PostContent"
                     class="form-control mb-3"
                     id="description"
                     rows="5"
                   ></textarea>
+                   <span asp-validation-for="PostContent" class="text-danger"></span>
                 </div>
 
                 <div class="col-12">
