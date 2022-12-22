@@ -492,42 +492,13 @@ pre code {
 .container-md,
 .container-sm,
 .container-xl {
-  width: 100%;
-  padding-right: 0.75rem;
-  padding-left: 0.75rem;
-  margin-right: auto;
-  margin-left: auto;
+    min-width: 100%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    margin-right: auto;
+    margin-left: auto;
 }
-@media (min-width: 576px) {
-  .container,
-  .container-sm {
-    max-width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container,
-  .container-md,
-  .container-sm {
-    max-width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .container,
-  .container-lg,
-  .container-md,
-  .container-sm {
-    max-width: 960px;
-  }
-}
-@media (min-width: 1200px) {
-  .container,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container-xl {
-    max-width: 1140px;
-  }
-}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -10312,8 +10283,11 @@ form.user .btn-user {
   animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
 footer.sticky-footer {
-  padding: 2rem 0;
-  flex-shrink: 0;
+    padding: 2rem 0;
+    flex-shrink: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 footer.sticky-footer .copyright {
   line-height: 1;
@@ -10376,4 +10350,7 @@ body.sidebar-toggled footer.sticky-footer {
 	font-size: 42px;
     margin-bottom: 25px;
 	color:#5C5C5C;
+}
+.postUri{
+    display:none
 }

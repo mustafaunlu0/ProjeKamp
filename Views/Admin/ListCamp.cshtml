@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<ProjeKamp.Models.Post>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <head>
@@ -11,7 +13,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
 
-      <title>Proje Kamp - Camp</title>
+      <title>Proje Kamp - Create Camp</title>
 
       <!-- Custom fonts for this template-->
       <link
@@ -23,11 +25,11 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet"
       />
-
-      <link
+        <link
         href="~/vendor/datatables/dataTables.bootstrap4.min.css"
         rel="stylesheet"
       />
+
 
       <!-- Custom styles for this template-->
       <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
@@ -47,96 +49,78 @@
         <div id="content">
           <my-Header></my-Header>
 
-          <!-- DataTales Example -->
-          <div class="container-fluid">
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Kamplar</h6>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Aksiyon</th>
-                      </tr>
-                    </thead>
-                    <tfoot>
-                      <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Detay</th>
-                      </tr>
-                    </tfoot>
-                    <tbody>
-                      <tr>
-                        <td>Shad Decker</td>
-                        <td>Regional Director</td>
-                        <td>Edinburgh</td>
-                        <td>51</td>
-                        <td>2008/11/13</td>
-                        <td>
-                          <a href="/Admin/GetCampDetails"
-                            ><button class="btn btn-primary">Detay</button></a
-                          >
+           <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostCounty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfParticipants)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdminId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCounty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostHour)
+            </td>
 
-                          <a href="">
-                            <button class="btn btn-danger">Sil</button></a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Michael Bruce</td>
-                        <td>Javascript Developer</td>
-                        <td>Singapore</td>
-                        <td>29</td>
-                        <td>2011/06/27</td>
-                        <td>
-                          <a href="campDetails.html"
-                            ><button class="btn btn-primary">Detay</button></a
-                          >
-
-                          <a href="">
-                            <button class="btn btn-danger">Sil</button></a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Donna Snider</td>
-                        <td>Customer Support</td>
-                        <td>New York</td>
-                        <td>27</td>
-                        <td>2011/01/25</td>
-                        <td>
-                          <a href="campDetails.html"
-                            ><button class="btn btn-primary">Detay</button></a
-                          >
-
-                          <a href="">
-                            <button class="btn btn-danger">Sil</button></a
-                          >
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            <td>
+                <img src="~/Images/@item.PostUri" width="100" height="100"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfParticipants)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminId)
+            </td>
+            <td>
+                <a asp-action="Details" asp-controller="Post" asp-route-id="@item.PostId"><button class="btn btn-success">Details</button></a> |
+                <a asp-action="Delete" asp-controller="Post" asp-route-id="@item.PostId"><button class="btn btn-danger">Delete</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
         <!-- End of Main Content -->
 
         <my-footer></my-footer>
@@ -145,44 +129,8 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Logout Modal-->
-    <div
-      class="modal fade"
-      id="logoutModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button
-              class="close"
-              type="button"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Select "Logout" below if you are ready to end your current session.
-          </div>
-          <div class="modal-footer">
-            <button
-              class="btn btn-secondary"
-              type="button"
-              data-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -191,7 +139,7 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="~/vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -201,13 +149,6 @@
 
     <!-- Page level plugins -->
     <script src="~/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="~/js/panel/demo/datatables-demo.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="~/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="~/js/panel/demo/chart-area-demo.js"></script>

@@ -1,4 +1,22 @@
-﻿<!DOCTYPE html>
+﻿@model ProjeKamp.Context.CampDataContext
+
+@{
+    List<User> admins = ViewData["Admins"] as List<User>;
+    List<User> users = ViewData["Users"] as List<User>;
+    List<Post> posts = ViewData["Posts"] as List<Post>;
+
+    var adminNumber = admins.Count;
+    var userNumber = users.Count;
+    var postNumber = posts.Count;
+}
+
+
+ 
+ 
+
+
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -11,7 +29,8 @@
     <meta name="author" content="" />
 
     <title>Proje Kamp - Dashboard</title>
-
+     <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
     <!-- Custom fonts for this template-->
     <link
       href="~/vendor/fontawesome-free/css/all.min.css"
@@ -23,8 +42,7 @@
       rel="stylesheet"
     />
 
-    <!-- Custom styles for this template-->
-    <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
+   
 
     <script src="~/js/panel/header/header.js"></script>
     <script src="~/js/panel/sidebar/sidebar.js"></script>
@@ -66,7 +84,7 @@
                           Kullanıcı Sayısı
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          100
+                          @userNumber
                         </div>
                       </div>
                       <div class="col-auto">
@@ -89,7 +107,7 @@
                           Admin Sayısı
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          2
+                          @adminNumber
                         </div>
                       </div>
                       <div class="col-auto">
@@ -116,7 +134,7 @@
                             <div
                               class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
                             >
-                              25
+                              @postNumber
                             </div>
                           </div>
                           
@@ -213,7 +231,7 @@
             >
               Cancel
             </button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" asp-action="Index" asp-controller="Home">Logout</a>
           </div>
         </div>
       </div>

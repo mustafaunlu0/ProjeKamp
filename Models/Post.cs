@@ -1,4 +1,6 @@
-﻿namespace ProjeKamp.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ProjeKamp.Models
 {
     public class Post
     {
@@ -14,7 +16,9 @@
 
         public string PostHour { get; set; }
 
-        public string PostImage { get; set; }
+        public string PostUri { get; set; }
+        [NotMapped]
+        public IFormFile PostImage { get; set; }
 
         public string PostContent { get; set; }
 

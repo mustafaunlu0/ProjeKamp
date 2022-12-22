@@ -17,7 +17,7 @@
 
       <!-- Custom fonts for this template-->
       <link
-        href="vendor/fontawesome-free/css/all.min.css"
+        href="~/vendor/fontawesome-free/css/all.min.css"
         rel="stylesheet"
         type="text/css"
       />
@@ -25,6 +25,11 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet"
       />
+        <link
+        href="~/vendor/datatables/dataTables.bootstrap4.min.css"
+        rel="stylesheet"
+      />
+
 
       <!-- Custom styles for this template-->
       <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
@@ -45,99 +50,83 @@
           <my-Header></my-Header>
 
           <div class="container-fluid">
-            <form asp-action="CreateCamp">
-               <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-              <div class="row">
-                <div class="col-6">
-                  <label for="campName">Kamp Adı</label>
-                  <input
-                    asp-for="PostName"
-                    type="text"
-                    id="campName"
-                    class="form-control mb-3"
-                    placeholder="Kamp Adı"
-                  />
-                  <span asp-validation-for="PostName" class="text-danger"></span>
-                </div>
-                <div class="col-6">
-                  <label for="city">İl</label>
+           
+              <form asp-action="CreateCamp" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+            <div class="form-group">
+                <label asp-for="PostName" class="control-label"></label>
+                <input asp-for="PostName" class="form-control" />
+                <span asp-validation-for="PostName" class="text-danger"></span>
+            </div>
+            <div class="col-6">
+            <div class="form-group">
+                <label for="city">İl</label>
                   <select asp-for="PostCity" id="city" class="form-control mb-3"></select>
                   <span asp-validation-for="PostCity" class="text-danger"></span>
-                </div>
-
-                <div class="col-6">
-                  <label for="district">İlçe</label>
-                  <select asp-for="PostCounty" id="district" class="form-control mb-3"></select>
+            </div>
+            </div>
+             <div class="col-6">
+            <div class="form-group">
+                <label for="district">İlçe</label>
+                  <select  asp-for="PostCounty" id="district" class="form-control mb-3"></select>
                   <span asp-validation-for="PostCounty" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-6">
+            <div class="form-group">
+                <label asp-for="PostDate"  class="control-label"></label>
+                <input asp-for="PostDate" type="date" class="form-control" />
+                <span asp-validation-for="PostDate" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-6">
+            <div class="form-group">
+                <label asp-for="PostHour" class="control-label"></label>
+                <input asp-for="PostHour" type="time" class="form-control" />
+                <span asp-validation-for="PostHour" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="form-group postUri" >
+                <div class="custom-file">
+                 <input  asp-for="PostUri" class="custom-file-input" value="uri" />
                 </div>
+                <span asp-validation-for="PostUri" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+            <label asp-validation-for="PostImage" class="control-label">Image</label>
+                <div class="custom-file">
+                 <input type="file" class="form-control-file" asp-for="PostImage">
+                </div>
+                <span asp-validation-for="PostImage" class="text-danger"></span>
 
-                <div class="col-6">
-                  <label for="campDate">Tarih</label>
-                  <input  asp-for="PostDate" type="date" id="campDate" class="form-control mb-3" />
-                  <span asp-validation-for="PostDate" class="text-danger"></span>
-                </div>
+            </div>
+            </div>
+             <div class="col-12">
+            <div class="form-group">
+                <label asp-for="PostContent" class="control-label"></label>
+                <textarea asp-for="PostContent"  class="form-control" rows="6"></textarea>
+                <span asp-validation-for="PostContent" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfParticipants" class="control-label"></label>
+                <input asp-for="NumberOfParticipants" class="form-control" />
+                <span asp-validation-for="NumberOfParticipants" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="AdminId" type="hidden" value="1" class="form-control" />
+                <span asp-validation-for="AdminId"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+            </div>
+        </form>
 
-                <div class="col-6">
-                  <label for="campGps">Saat</label>
-                  <input
-                    asp-for="PostHour"
-                    type="text"
-                    id="campGps"
-                    class="form-control mb-3"
-                    placeholder="Saat"
-                  />
-                  <span asp-validation-for="PostHour" class="text-danger"></span>
-                </div>
-                
-                <div class="col-6">
-                  <label for="campParticipant">Kontenjan</label>
-                  <input
-                    asp-for="NumberOfParticipants"
-                    type="text"
-                    id="campGps"
-                    class="form-control mb-3"
-                    placeholder="50"
-                  />
-                  <span asp-validation-for="NumberOfParticipants" class="text-danger"></span>
-                </div>
 
-                <div class="col-12">
-                  <label for="myFile">Resim</label>
-                </div>
-                <div class="col-12">
-                  <div class="file-upload mb-3">
-                    <input
-                      asp-for="PostImage"
-                      class="file-upload__input"
-                      type="file"
-                      name="myFile[]"
-                      id="myFile"
-                      multiple
-                    />
-                    <span asp-validation-for="PostImage" class="text-danger"></span>
-                    <button class="file-upload__button" type="button">
-                      Choose File(s)
-                    </button>
-                    <span class="file-upload__label"></span>
-                  </div>
-                </div>
 
-                <div class="col-12">
-                  <label for="description">Detaylı Açıklama</label>
-                  <textarea
-                    asp-for="PostContent"
-                    class="form-control mb-3"
-                    id="description"
-                    rows="5"
-                  ></textarea>
-                   <span asp-validation-for="PostContent" class="text-danger"></span>
-                </div>
-
-                <div class="col-12">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ignismyModal">Kaydet</button>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
         <!-- End of Main Content -->
@@ -149,72 +138,7 @@
     <!-- End of Page Wrapper -->
 
     
-    <!-- Modal Success -->
-    <div class="modal fade" id="ignismyModal" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label=""
-            >
-              <span>×</span>
-            </button>
-          </div>
 
-          <div class="modal-body">
-            <div class="success-pop">
-              <img
-                src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png"
-                alt=""
-              />
-              <h1>Kamp Oluşturuldu</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Logout Modal-->
-    <div
-      class="modal fade"
-      id="logoutModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button
-              class="close"
-              type="button"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Select "Logout" below if you are ready to end your current session.
-          </div>
-          <div class="modal-footer">
-            <button
-              class="btn btn-secondary"
-              type="button"
-              data-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

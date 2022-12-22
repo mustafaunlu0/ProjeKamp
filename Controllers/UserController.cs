@@ -36,14 +36,14 @@ namespace ProjeKamp.Controllers
             }
             return View(user);
         }
-        public IActionResult LoginDeneme()
+        public IActionResult Login()
         {
 
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult LoginDeneme(string email,string key)
+        public IActionResult Login(string email,string key)
         {
 
 
@@ -100,6 +100,7 @@ namespace ProjeKamp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserId,UserName,UserLastName,UserEmail,UserPassword")] User user)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(user);
@@ -132,6 +133,7 @@ namespace ProjeKamp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,UserLastName,UserEmail,UserPassword")] User user)
         {
+            user.RoleId = 2;
             if (id != user.UserId)
             {
                 return NotFound();
@@ -155,7 +157,7 @@ namespace ProjeKamp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ListUser","Admin");
             }
             return View(user);
         }
@@ -194,7 +196,7 @@ namespace ProjeKamp.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("ListUser","Admin");
         }
 
         private bool UserExists(int id)
