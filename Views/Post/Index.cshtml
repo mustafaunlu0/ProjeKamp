@@ -9,9 +9,28 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+
+           <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostCounty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostImage)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.PostContent)
             </th>
@@ -28,6 +47,25 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.PostName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCounty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostHour)
+            </td>
+
+            <td>
+                <img src="~/Images/@item.PostUri" width="400" height="400"/>
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PostContent)
             </td>
             <td>
@@ -37,9 +75,8 @@
                 @Html.DisplayFor(modelItem => item.AdminId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PostId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PostId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
+                <a asp-action="Details" asp-controller="Post" asp-route-id="@item.PostId"><button class="btn btn-success">Details</button></a> |
+                <a asp-action="Delete" asp-controller="Post" asp-route-id="@item.PostId"><button class="btn btn-danger">Delete</button></a>
             </td>
         </tr>
 }

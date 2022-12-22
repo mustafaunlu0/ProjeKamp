@@ -56,7 +56,8 @@ namespace ProjeKamp.Controllers
                     {
                         return RedirectToAction("Index", "Admin");
                     }
-                    return RedirectToAction(nameof(Index));
+                    
+                    return RedirectToAction("Index","Post");
                 }
             }
             return View();

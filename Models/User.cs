@@ -2,7 +2,7 @@
 
 namespace ProjeKamp.Models
 {
-    public class User
+    public class User 
     {
 
         public int UserId { get; set; }
