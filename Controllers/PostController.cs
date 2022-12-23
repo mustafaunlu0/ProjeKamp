@@ -22,7 +22,9 @@ namespace ProjeKamp.Controllers
         // GET: Post
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Posts.ToListAsync());
+            HttpContext.Request.Cookies.TryGetValue("username", out var value);
+            ViewData["username"] = value;
+            return View(await _context.Posts.ToListAsync());
         }
 
         // GET: Post/Details/5

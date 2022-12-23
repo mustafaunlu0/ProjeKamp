@@ -2,7 +2,11 @@
 
 @{
     ViewData["Title"] = "Index";
+    var username = ViewData["username"];
 }
+
+
+    <h1>@username</h1>
 
 <h1>Index</h1>
 
@@ -75,8 +79,7 @@
                 @Html.DisplayFor(modelItem => item.AdminId)
             </td>
             <td>
-                <a asp-action="Details" asp-controller="Post" asp-route-id="@item.PostId"><button class="btn btn-success">Details</button></a> |
-                <a asp-action="Delete" asp-controller="Post" asp-route-id="@item.PostId"><button class="btn btn-danger">Delete</button></a>
+                <a asp-action="Index" asp-controller="Post" asp-route-id="@item.PostId"><button class="btn btn-success">Join</button></a> 
             </td>
         </tr>
 }
