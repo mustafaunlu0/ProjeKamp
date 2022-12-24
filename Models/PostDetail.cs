@@ -5,9 +5,10 @@ namespace ProjeKamp.Models
     public class PostDetail
     {
         [Key]
+        public int detailId { get; set; }
         public int postId { get; set; }
 
-        public User ParticipantId { get; set; }
+        public int ParticipantId { get; set; }
 
     }
 }

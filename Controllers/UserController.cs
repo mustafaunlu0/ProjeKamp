@@ -57,7 +57,8 @@ namespace ProjeKamp.Controllers
                         return RedirectToAction("Index", "Admin");
                     }
                     HttpContext.Response.Cookies.Append("username", item.UserName);
-                    
+                    HttpContext.Response.Cookies.Append("userId", item.UserId.ToString());
+
                     return RedirectToAction("Index","Post");
                 }
             }

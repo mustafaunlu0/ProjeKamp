@@ -1,0 +1,242 @@
+﻿.card {
+    border-radius: 10px;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    padding: 1.25rem 1.25rem 0 1.25rem;
+}
+
+    .cardHeader span {
+        font-weight: 600;
+        margin-left: 15px;
+    }
+
+.avatarImg {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid black;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 300px;
+}
+
+.content {
+    background: #f1f1f1;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    font-weight: 500
+}
+
+    .content span {
+        font-weight: 400
+    }
+
+.button {
+    --color-hover: #F6F8FF;
+    --color-active: #fff;
+    --icon: #E1E6F9;
+    --icon-hover: #ECEFFC;
+    --icon-active: #fff;
+    --background: #404660;
+    --background-hover: #393E57;
+    --background-active: #275EFE;
+    --shadow: rgba(0, 17, 119, 0.1);
+    display: block;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    border: 0;
+    background: none;
+    padding: 8px 20px 8px 24px;
+    border-radius: 9px;
+    line-height: 27px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    color: #dfe1e9;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.2s linear;
+}
+
+    .button:hover {
+        --icon: var(--icon-hover);
+        --color: var(--color-hover);
+        --background: var(--background-hover);
+    }
+
+    .button:active {
+        --scale: .95;
+    }
+
+    .button:not(.liked):hover {
+        --hand-rotate: 8deg;
+        --hand-thumb-1: -12deg;
+        --hand-thumb-2: 36deg;
+    }
+
+    .button.liked {
+        --span-x: 2px;
+        --span-d-o: 1;
+        --span-d-x: 0;
+        --icon: var(--icon-active);
+        --color: var(--color-active);
+        --background: var(--background-active);
+        --hand-name: hand;
+    }
+
+    .button:after {
+        content: "";
+        min-width: 103px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        transition: background 0.2s linear, transform 0.2s, box-shadow 0.2s linear;
+        transform: scale(var(--scale, 1)) translateZ(0);
+        background: var(--background);
+        box-shadow: 0 4px 8px var(--shadow), 0 8px 20px var(--shadow);
+    }
+
+    .button .emitter {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateZ(-4px);
+    }
+
+        .button .emitter div {
+            width: 6px;
+            height: 6px;
+            margin: -3px 0 0 -3px;
+            border-radius: 2px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform-style: preserve-3d;
+            background: var(--b, none);
+        }
+
+    .button .hand {
+        width: 11px;
+        height: 11px;
+        border-radius: 2px 0 0 0;
+        background: var(--icon);
+        margin: 10px 8px 0 0;
+        transform-origin: -5px -1px;
+        transition: transform 0.25s, background 0.2s linear;
+        transform: rotate(var(--hand-rotate, 0deg)) translateZ(0);
+        -webkit-animation: var(--hand-name, none) 0.5s linear;
+        animation: var(--hand-name, none) 0.5s linear;
+    }
+
+        .button .hand:before, .button .hand:after {
+            content: "";
+            background: var(--icon);
+            position: absolute;
+            transition: background 0.2s linear, box-shadow 0.2s linear;
+        }
+
+        .button .hand:before {
+            left: -5px;
+            bottom: 0;
+            height: 12px;
+            width: 4px;
+            border-radius: 1px 1px 0 1px;
+        }
+
+        .button .hand:after {
+            right: -3px;
+            top: 0;
+            width: 4px;
+            height: 4px;
+            border-radius: 0 2px 2px 0;
+            background: var(--icon);
+            box-shadow: -0.5px 4px 0 var(--icon), -1px 8px 0 var(--icon), -1.5px 12px 0 var(--icon);
+            transform: scaleY(0.6825);
+            transform-origin: 0 0;
+        }
+
+        .button .hand .thumb {
+            background: var(--icon);
+            width: 10px;
+            height: 4px;
+            border-radius: 2px;
+            transform-origin: 2px 2px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: transform 0.25s, background 0.2s linear;
+            transform: scale(0.85) translateY(-0.5px) rotate(var(--hand-thumb-1, -45deg)) translateZ(0);
+        }
+
+            .button .hand .thumb:before {
+                content: "";
+                height: 4px;
+                width: 7px;
+                border-radius: 2px;
+                transform-origin: 2px 2px;
+                background: var(--icon);
+                position: absolute;
+                left: 7px;
+                top: 0;
+                transition: transform 0.25s, background 0.2s linear;
+                transform: rotate(var(--hand-thumb-2, -45deg)) translateZ(0);
+            }
+
+    .button .hand,
+    .button span {
+        z-index: 1;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+        .button .hand span,
+        .button span span {
+            opacity: var(--span-d-o, 0);
+            transition: transform 0.25s, opacity 0.2s linear;
+            transform: translateX(var(--span-d-x, 4px)) translateZ(0);
+        }
+
+    .button > span {
+        transition: transform 0.25s;
+        transform: translateX(var(--span-x, 4px)) translateZ(0);
+    }
+
+@-webkit-keyframes hand {
+    30% {
+        transform: rotate(-14deg) translateZ(0);
+    }
+
+    65% {
+        transform: rotate(7deg) translateZ(0);
+    }
+
+    100% {
+        transform: rotate(0deg) translateZ(0);
+    }
+}
+
+@keyframes hand {
+    30% {
+        transform: rotate(-14deg) translateZ(0);
+    }
+
+    65% {
+        transform: rotate(7deg) translateZ(0);
+    }
+
+    100% {
+        transform: rotate(0deg) translateZ(0);
+    }
+}

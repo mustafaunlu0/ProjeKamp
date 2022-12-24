@@ -8,6 +8,8 @@
     var adminNumber = admins.Count;
     var userNumber = users.Count;
     var postNumber = posts.Count;
+
+   
 }
 
 
@@ -49,7 +51,7 @@
     <script src="~/js/panel/footer/footer.js"></script>
   </head>
 
-  <body id="page-top">
+  <body id="page-top" onload="chartData(@adminNumber,@userNumber,@postNumber)">
     <!-- Page Wrapper -->
     <div id="wrapper">
       <my-sidebar></my-sidebar>

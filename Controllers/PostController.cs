@@ -26,6 +26,45 @@ namespace ProjeKamp.Controllers
             ViewData["username"] = value;
             return View(await _context.Posts.ToListAsync());
         }
+        public async Task<IActionResult> ListPost()
+        {
+            HttpContext.Request.Cookies.TryGetValue("username", out var value);
+            ViewData["username"] = value;
+            return View(await _context.Posts.ToListAsync());
+        }
+        public async Task<IActionResult> Record(int? id)
+        {
+            HttpContext.Request.Cookies.TryGetValue("userId", out var userId);
+            Console.WriteLine("post-id: " + id.Value);
+            Console.WriteLine("user-id: " + userId);
+            if (id != null && userId != null)
+            {
+
+
+                try
+                {
+                    PostDetail postDetail = new PostDetail();
+                    postDetail.postId = id.Value;
+                    postDetail.ParticipantId = Convert.ToInt32(userId);
+                    _context.Add(postDetail);
+                    await _context.SaveChangesAsync();
+                }catch(Exception ex)
+                {
+                    Console.WriteLine("Exception: " + ex);
+                    return RedirectToAction("ListPost");
+
+                }
+
+
+
+            }
+            else
+            {
+                Console.WriteLine("tepki yok");
+
+            }
+            return RedirectToAction("ListPost");
+        }
 
         // GET: Post/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -41,19 +80,32 @@ namespace ProjeKamp.Controllers
             {
                 return NotFound();
             }
+            var postDetail = _context.PostDetail.ToList();
+            List<User> userList = _context.Users.ToList();
+            List<String> usernameList=new List<String>();
 
+            foreach(var detail in postDetail)
+            {
+                foreach (User user in userList)
+                {
+                    if (user.UserId == detail.ParticipantId && detail.postId == id)
+                    {
+                        Console.WriteLine("user: " + user.UserName);
+                        usernameList.Add(user.UserName.ToString());
+                    }
+                }
+            }
+               
+
+            ViewData["userList"] = usernameList;
             return View(post);
         }
 
-        // GET: Post/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Post/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PostId,PostContent,NumberOfParticipants,NumberOfUndecided,AdminId")] Post post)

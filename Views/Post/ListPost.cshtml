@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ProjeKamp.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+    var username = ViewData["username"];
+}
+<!DOCTYPE html>
+<html>
+    <head>
+
+     <link href="~/css/listPost.css" rel="stylesheet" />
+      <script src="~/js/listCamp.js"></script>
+
+    </head>
+    <body >
+        
+    <h1>@username</h1>
+<div class="container">
+    <div class="row">
+            @foreach(var item in Model)
+            {
+                    <div class="col-xl-6 col-md-12 mb-4">
+                      <div class="card" style="width: 40rem;">
+                        <div class="cardHeader">
+                          <img src="https://www.lansweeper.com/wp-content/uploads/2018/05/ASSET-USER-ADMIN.png" class="avatarImg">
+                          <span>B201210392</span>
+                        </div>
+                        <div class="card-body">
+                          <img src="~/Images/@item.PostUri" class="card-img-top">
+                          <div class="content">
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="postName">Kamp Adı: <span>@item.PostName</span>
+                                </div>
+                              </div>
+                              <div class="col-6">
+                                <div class="postCity">Şehir: <span>@item.PostCity</span>
+                                </div>
+                              </div>
+                              <div class="col-6">
+                                <div class="postCounty">İlçe: <span>@item.PostCounty</span>
+                                </div>
+                              </div>
+                              <div class="col-6">
+                                <div class="postDate">Tarih: <span>@item.PostDate</span>
+                                </div>
+                              </div>
+                              <div class="col-6">
+                                <div class="postHour">Saat: <span>@item.PostHour</span>
+                                </div>
+                              </div>
+                              <div class="col-6">
+                                <div class="numberOfPartifipants"> Kontenjan: <span>@item.NumberOfParticipants</span>
+                                </div>
+                              </div>
+                              <div class="col-12">
+                                <div class="postContent">Detay: <span>@item.PostContent</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                              <div class="buttons mt-4">
+
+                                    <a asp-action="Record" asp-controller="Post" asp-route-id="@item.PostId">                                
+                                  <button class="button" >
+                                        <div class="emitter"></div>
+                                        <div class="hand">
+                                          <div class="thumb"></div>
+                                        </div>
+                                        <span>Katılmak İstiyorum</span>
+                                        
+                                  </button>
+                                  </a>
+                              </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+            }
+               
+            
+
+
+    </div>
+</div>
+
+
+
+    </body>
+</html>

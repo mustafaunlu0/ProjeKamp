@@ -46,7 +46,7 @@
         <!-- Main Content -->
                <div id="content">
           <my-Header></my-Header>
-
+          <div class="container-fluid">
     
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -112,11 +112,11 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="PostId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="ListCamp" asp-controller="Admin">Back to List</a>
+        <a asp-action="ListCamp" asp-controller="Admin"><button class="btn btn-primary">Back to List</button></a>
     </form>
 
         <!-- End of Main Content -->
-
+        </div>
         <my-footer></my-footer>
       </div>
       <!-- End of Content Wrapper -->
