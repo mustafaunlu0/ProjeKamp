@@ -4,7 +4,7 @@ namespace ProjeKamp.Models
 {
     public class User 
     {
-
+        [Display(Name = "Kullanıcı ID")]
         public int UserId { get; set; }
 
         [Required(ErrorMessage ="Ad Alanı Zorunludur")]
@@ -26,6 +26,7 @@ namespace ProjeKamp.Models
         [StringLength(15)]
         public string UserPassword { get; set; }
 
+        [Display(Name = "Rol ID")]
         public int RoleId { get; set; }
     }
 }

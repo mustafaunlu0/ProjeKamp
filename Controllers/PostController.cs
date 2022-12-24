@@ -39,14 +39,22 @@ namespace ProjeKamp.Controllers
             Console.WriteLine("user-id: " + userId);
             if (id != null && userId != null)
             {
-
-
                 try
                 {
                     PostDetail postDetail = new PostDetail();
                     postDetail.postId = id.Value;
                     postDetail.ParticipantId = Convert.ToInt32(userId);
-                    _context.Add(postDetail);
+                    var userControl = _context.PostDetail.Where(x=> x.ParticipantId == Convert.ToInt32(userId) && x.postId==id.Value).FirstOrDefault();
+                    if(userControl != null)
+                    {
+                        Console.WriteLine("daha önce böyle bir kayıt var");
+                    }
+                    else
+                    {
+                        Console.WriteLine("daha önce böyle bir kayıt yok");
+                        _context.Add(postDetail);
+
+                    }
                     await _context.SaveChangesAsync();
                 }catch(Exception ex)
                 {
@@ -54,14 +62,6 @@ namespace ProjeKamp.Controllers
                     return RedirectToAction("ListPost");
 
                 }
-
-
-
-            }
-            else
-            {
-                Console.WriteLine("tepki yok");
-
             }
             return RedirectToAction("ListPost");
         }
@@ -69,6 +69,10 @@ namespace ProjeKamp.Controllers
         // GET: Post/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            var postDetail = _context.PostDetail.ToList();
+            List<User> userList = _context.Users.ToList();
+            List<String> usernameList = new List<String>();
+
             if (id == null || _context.Posts == null)
             {
                 return NotFound();
@@ -80,9 +84,7 @@ namespace ProjeKamp.Controllers
             {
                 return NotFound();
             }
-            var postDetail = _context.PostDetail.ToList();
-            List<User> userList = _context.Users.ToList();
-            List<String> usernameList=new List<String>();
+          
 
             foreach(var detail in postDetail)
             {

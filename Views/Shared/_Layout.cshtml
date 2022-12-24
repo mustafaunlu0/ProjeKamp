@@ -1,7 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Index";
     var username = ViewData["username"];
+    
 }
+@inject LanguageService language
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,12 +21,11 @@
     <header id="headerMenu">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ProjeKamp</a>
-                <a class="navbar-brand" asp-area="" asp-controller="Post" asp-action="ListPost">Post-List</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@language.Getkey("projeKamp")</a>
 
                 @if(username != null)
                 {
-                 <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">Posts</a>
+                 <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="ListPost">@language.Getkey("etkinlik")</a>
                 }
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -37,17 +39,15 @@
 
                     <div class="form-inline my-2 my-lg-0">
                         <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
-                            </li>
+
                             @if(username == null)
                             {
                                <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">@language.Getkey("giris")</a>
                             </li>
 
                          <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="SignUp">Sign Up</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="SignUp">@language.Getkey("kayit")</a>
                          </li> 
                             }
                             
@@ -57,11 +57,24 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">@username</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Log Out</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">@language.Getkey("cikis")</a>
                             </li>
                         
                             
                             }
+                                    <li><a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="tr-TR" class="nav-link"><i class="flag-icon flag-icon-gb"></i> Turkish</a></li>
+
+                                    <li><a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US" class="nav-link"><i class="flag-icon flag-icon-gb"></i> English</a></li>
+
+                                    <li><a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="de-DE" class="nav-link"><i class="flag-icon flag-icon-de"></i> Deutsch</a></li>
+
+                         
+                               
+                    
+
+                   
+
+                </div>
                             
                         </ul>
                          

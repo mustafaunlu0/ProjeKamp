@@ -1,16 +1,54 @@
 ﻿@model ProjeKamp.Models.User
 
-@{
-    ViewData["Title"] = "Create";
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-<h1>Create</h1>
+    <title>Proje Kamp - Users</title>
 
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    <!-- Custom fonts for this template-->
+    <link
+      href="~/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
+
+    <link
+      href="~/vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="~/js/panel/header/header.js"></script>
+    <script src="~/js/panel/sidebar/sidebar.js"></script>
+    <script src="~/js/panel/footer/footer.js"></script>
+  </head> 
+  <body id="page-top">
+    <div id="wrapper">
+      <my-sidebar></my-sidebar>
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <my-Header></my-Header>
+
+         <div class="container-fluid">
+               <form asp-action="Create" asp-controller="User">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="UserName" class="control-label"></label>
@@ -36,13 +74,82 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
+</div>
+
+
+
+
+        <!-- End of Main Content -->
+
+        <my-footer></my-footer>
+      </div>
+      <!-- End of Content Wrapper -->
     </div>
-</div>
+    <!-- End of Page Wrapper -->
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Select "Logout" below if you are ready to end your current session.
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    
+     <!-- Bootstrap core JavaScript-->
+     <script src="~/vendor/jquery/jquery.min.js"></script>
+     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+     <!-- Core plugin JavaScript-->
+     <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+     <!-- Page level plugins -->
+     <script src="~/vendor/datatables/jquery.dataTables.min.js"></script>
+     <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+     <!-- Page level custom scripts -->
+     <script src="~/js/panel/demo/datatables-demo.js"></script>
+
+     <!-- Custom scripts for all pages-->
+     <script src="~/js/panel/sb-admin-2.min.js"></script>
+
+     <script src="~/js/site.js" asp-append-version="true"></script>
+
+  </body>
+</html>

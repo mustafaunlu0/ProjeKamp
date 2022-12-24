@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@inject LanguageService language
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,19 +16,18 @@
   
 <div class="container-fluid splash" id="splash">
   <div class="container">
-    <h1>Mr. Roboto</h1>
-    <span class="lead">Android Life Form</span>
+    <h1>@language.Getkey("projeKamp")</h1>
+    <span class="lead">@language.Getkey("baslik")</span>
     <span class="continue"><a href="#about"><i class="fa fa-angle-down"></i></a></span>
   </div>
 </div>
 
 <div class="container-fluid intro" id="about">
   <div class="container">
-    <h2>About Me</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias ratione impedit soluta amet quas saepe temporibus <a href="#">eum reprehenderit</a> voluptas! A nihil adipisci itaque quos quo dolorum consequuntur iusto facere quaerat, excepturi quod, necessitatibus aliquid quae est qui, aut in assumenda animi tempora debitis. Beatae, veritatis, delectus. Repellat dolore, molestias nam.</p>
+    <h2>@language.Getkey("nedir")</h2>
+    <p>@language.Getkey("aciklama")</p>
     <div class="registerButton">
-    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Create"><button class="btn btn-primary" asp-controller="User" >Aramıza Katıl</button></a>
-
+    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="SignUp"><button class="btn btn-primary">@language.Getkey("katil")</button></a>
     </div>
 </div>
 </div>

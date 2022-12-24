@@ -32,10 +32,29 @@ namespace ProjeKamp.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ListPost","Post");
             }
             return View(user);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("UserId,UserName,UserLastName,UserEmail,UserPassword")] User user)
+        {
+            user.RoleId = 2;
+            if (ModelState.IsValid)
+            {
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("ListUser","Admin");
+            }
+            return View(user);
+        }
+
+
         public IActionResult Login()
         {
 
@@ -59,7 +78,7 @@ namespace ProjeKamp.Controllers
                     HttpContext.Response.Cookies.Append("username", item.UserName);
                     HttpContext.Response.Cookies.Append("userId", item.UserId.ToString());
 
-                    return RedirectToAction("Index","Post");
+                    return RedirectToAction("ListPost","Post");
                 }
             }
             return View();

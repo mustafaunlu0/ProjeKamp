@@ -65,7 +65,7 @@ namespace ProjeKamp.Migrations
 
                     b.HasKey("PostId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Posts", (string)null);
                 });
 
             modelBuilder.Entity("ProjeKamp.Models.PostDetail", b =>
@@ -84,7 +84,7 @@ namespace ProjeKamp.Migrations
 
                     b.HasKey("detailId");
 
-                    b.ToTable("PostDetail");
+                    b.ToTable("PostDetail", (string)null);
                 });
 
             modelBuilder.Entity("ProjeKamp.Models.Role", b =>
@@ -101,7 +101,7 @@ namespace ProjeKamp.Migrations
 
                     b.HasKey("RoleId");
 
-                    b.ToTable("Role");
+                    b.ToTable("Role", (string)null);
                 });
 
             modelBuilder.Entity("ProjeKamp.Models.User", b =>
@@ -136,7 +136,7 @@ namespace ProjeKamp.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 #pragma warning restore 612, 618
         }
