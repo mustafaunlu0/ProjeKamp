@@ -48,7 +48,7 @@ namespace ProjeKamp.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateCamp([Bind("PostId,PostName,PostCity,PostCounty,PostDate,PostHour,NumberOfParticipants,PostUri,PostImage,PostContent,AdminId")] Post post, IFormFile file)
+        public async Task<IActionResult> CreateCamp([Bind("PostId,PostName,PostCity,PostCounty,PostDate,PostHour,NumberOfParticipants,PostUri,PostImage,PostMap,PostContent,AdminId")] Post post, IFormFile file)
         {
             if (post != null)
             {

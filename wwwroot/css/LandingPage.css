@@ -47,10 +47,6 @@ p {
     line-height: 1.5;
 }
 
-a, a:hover, a:focus, a:active, a:visited {
-    color: #E74C3C;
-    text-decoration: underline;
-}
 
 /* ========================
 Containers
@@ -134,7 +130,7 @@ Navigation
 }
 
 .intro {
-    background-color: #E74C3C;
+    background-color: #4e73df;
     color: #fff;
 }
 

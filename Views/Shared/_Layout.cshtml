@@ -13,78 +13,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProjeKamp</title>
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+     <link
+        href="~/vendor/fontawesome-free/css/all.min.css"
+        rel="stylesheet"
+        type="text/css"
+      />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProjeKamp.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header id="headerMenu">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@language.Getkey("projeKamp")</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" asp-controller="Home" asp-action="Index"><i class="fas fa-campground"></i></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-                @if(username != null)
-                {
-                 <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="ListPost">@language.Getkey("etkinlik")</a>
-                }
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-
-                
-                    </ul>
-
-                    <div class="form-inline my-2 my-lg-0">
-                        <ul class="navbar-nav flex-grow-1">
-
-                            @if(username == null)
-                            {
-                               <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">@language.Getkey("giris")</a>
-                            </li>
-
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" asp-controller="Home" asp-action="Index">@language.Getkey("projeKamp")</a>
+      </li>
+                    
+                   
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+         
+      <ul class="navbar-nav dropleft">
+         @if(username == null)
+                    {
                          <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="SignUp">@language.Getkey("kayit")</a>
-                         </li> 
-                            }
-                            
-                            @if(username != null)
+                        <a class="nav-link"  asp-controller="User" asp-action="Login">@language.Getkey("giris")</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link"  asp-controller="User" asp-action="SignUp">@language.Getkey("kayit")</a>
+                     </li>
+                    }
+                     @if(username != null)
                             {
                                 <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">@username</a>
+                                <a class="nav-link" asp-area="" asp-controller="Post" asp-action="Index">@username</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">@language.Getkey("cikis")</a>
+                            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login">@language.Getkey("cikis")</a>
                             </li>
                         
                             
                             }
-                                    <li><a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="tr-TR" class="nav-link"><i class="flag-icon flag-icon-gb"></i> Turkish</a></li>
-
-                                    <li><a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US" class="nav-link"><i class="flag-icon flag-icon-gb"></i> English</a></li>
-
-                                    <li><a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="de-DE" class="nav-link"><i class="flag-icon flag-icon-de"></i> Deutsch</a></li>
-
-                         
-                               
-                    
-
-                   
-
-                </div>
-                            
-                        </ul>
-                         
-                        </div>
-                </div>
-                
-            </div>
-        </nav>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+         <i class="fas fa-language"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="tr-TR"><i class="fas fa-flag"></i> Türkçe</a>
+          <a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US"><i class="fas fa-flag"></i> İngilizce</a>
+          <a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="de-DE"><i class="fas fa-flag"></i> Almanca</a>
+        </div>
+      </li>
+       
+      </ul>
+    </div>
+  </div>
+</nav>
     </header>
-    <div class="container">
+    <div class="container mt-4">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -93,9 +86,29 @@
 
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/Physics2DPlugin3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <script src="~/js/panel/sb-admin-2.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <script>
+      
+
+    $('ul.navbar-nav > li').click(function (e) {
+        $('ul.navbar-nav > li').removeClass('active');
+        $(this).addClass('active');
+    });
+
+
+    $('.dropdown').mouseenter(function () {
+        if (!$('.navbar-toggle').is(':visible')) {
+            if (!$(this).hasClass('open')) { 
+                $('.dropdown-toggle', this).trigger('click');
+            }
+        }
+    });
+
+    </script>
 </body>
 </html>

@@ -32,6 +32,8 @@ namespace ProjeKamp.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
+                HttpContext.Response.Cookies.Append("username", user.UserName);
+                HttpContext.Response.Cookies.Append("userId", user.UserId.ToString());
                 return RedirectToAction("ListPost","Post");
             }
             return View(user);

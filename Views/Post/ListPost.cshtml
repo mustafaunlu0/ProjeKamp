@@ -2,7 +2,9 @@
 
 @{
     ViewData["Title"] = "Index";
+    string kayit = TempData["kayit"] as string;
     var username = ViewData["username"];
+    var posts = ViewData["posts"] as List<Post>;
 }
 <!DOCTYPE html>
 <html>
@@ -11,23 +13,77 @@
      <link href="~/css/listPost.css" rel="stylesheet" />
       <script src="~/js/listCamp.js"></script>
 
+       <link
+      href="~/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+
+
     </head>
     <body >
-        
-    <h1>@username</h1>
-<div class="container">
+
+
+<div class="container-fluid">
     <div class="row">
+
+            <div class="col-2">
+        <div class="cityList mb-4">
+            <h3>Kamp Yapılacak Şehirler</h3>
+            
             @foreach(var item in Model)
             {
-                    <div class="col-xl-6 col-md-12 mb-4">
-                      <div class="card" style="width: 40rem;">
-                        <div class="cardHeader">
-                          <img src="https://www.lansweeper.com/wp-content/uploads/2018/05/ASSET-USER-ADMIN.png" class="avatarImg">
-                          <span>B201210392</span>
-                        </div>
-                        <div class="card-body">
-                          <img src="~/Images/@item.PostUri" class="card-img-top">
-                          <div class="content">
+               <p><i class="fas fa-city"></i> @Html.ActionLink(item.PostCity, "Filter", "Post", new {  @class= "linkClass" ,reportID = item.PostCity }, null)
+               </p>
+               
+            }
+             
+        </div>
+
+        <div class="sidebar">
+        <div class="sidebarTitle">
+          <h3>Katıldığım Kamplar</h3>
+        </div>
+        <div class="sidebarCamp">
+                       
+                        @foreach(var item in posts)
+                        {
+        
+                            <p data-toggle="modal" data-target=""><i class="fas fa-hiking"></i>@Html.ActionLink(item.PostName, "GetDetailForModal", "Post", new {  @class= "linkClass" ,reportID = item.PostId,username=@username }, null)</p>
+                            
+                        }
+                        
+                        
+    
+        
+        </div>
+      </div>
+        </div>
+        <div class="col-10">
+            <div class="row">
+            @foreach(var item in Model)
+            {
+                DateTime dateTime = DateTime.Parse(item.PostDate);
+                int result = DateTime.Compare(DateTime.Now, dateTime);
+
+                        <div class="col-xl-6 col-md-12 mb-4">
+                            <div class="card" style="width: 40rem;">
+                                <div class="cardHeader">
+                                    <img src="https://www.lansweeper.com/wp-content/uploads/2018/05/ASSET-USER-ADMIN.png" class="avatarImg">
+                                    <span>B201210392</span>
+                                </div>
+                                <div class="card-body">
+                                    
+                                    @if (@result == 1)
+                                    {
+                                        <img src="~/Images/@item.PostUri" class="card-img-top" style="filter: sepia(100%) blur(2px);">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Images/@item.PostUri" class="card-img-top">
+                                    }
+                                    <div class="content">
                             <div class="row">
                               <div class="col-12">
                                 <div class="postName">Kamp Adı: <span>@item.PostName</span>
@@ -49,36 +105,68 @@
                                 <div class="postHour">Saat: <span>@item.PostHour</span>
                                 </div>
                               </div>
-                              <div class="col-6">
-                                <div class="numberOfPartifipants"> Kontenjan: <span>@item.NumberOfParticipants</span>
-                                </div>
-                              </div>
+                                            @if(item.NumberOfParticipants != 0)
+                                            {
+                                             <div class="col-6">
+                                            <div class="numberOfPartifipants"> Kontenjan: <span>@item.NumberOfParticipants</span>
+                                            </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                 <div class="col-12">
+                                            <div class="postContent" style="color: #ad0000;font-size: 25px;">Kontenjan Doldu
+                                            </div>
+                                        </div>
+                                            }
+
+
                               <div class="col-12">
                                 <div class="postContent">Detay: <span>@item.PostContent</span>
                                 </div>
                               </div>
+                               @if (@result == 1)
+                                    {
+                                        <div class="col-12">
+                                            <div class="postContent" style="color: #ad0000;font-size: 25px;">Süresi Doldu
+                                            </div>
+                                        </div>
+                                    }
+                              
                             </div>
                           </div>
-                              <div class="buttons mt-4">
+                          @if(@result <= 0 ){
 
-                                    <a asp-action="Record" asp-controller="Post" asp-route-id="@item.PostId">                                
-                                  <button class="button" >
-                                        <div class="emitter"></div>
-                                        <div class="hand">
-                                          <div class="thumb"></div>
-                                        </div>
-                                        <span>Katılmak İstiyorum</span>
+
+
+
+   
+                                        <div class="buttons mt-4">
+                                      
+                                                    <a asp-action="Record" asp-controller="Post" asp-route-id="@item.PostId">                                
+                                                      <button class="button" onclick="myFunction()">
+                                                            <div class="emitter"></div>
+                                                            <div class="hand">
+                                                              <div class="thumb"></div>
+                                                            </div>
+                                                            <span>Katılmak İsteği Gönder</span>
                                         
-                                  </button>
-                                  </a>
+                                                      </button>
+                                                      </a>
+                                              
+                                        
                               </div>
+                          }                               
+
+                            
 
                         </div>
                       </div>
                     </div>
 
             }
-               
+            </div>
+               </div>
             
 
 
@@ -86,6 +174,13 @@
 </div>
 
 
+<script>
+function myFunction() {
+  alert("Başarıyla kayıt olundu.")
+}
+</script>
 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -17,6 +17,7 @@
 <div class="container-fluid splash" id="splash">
   <div class="container">
     <h1>@language.Getkey("projeKamp")</h1>
+ 
     <span class="lead">@language.Getkey("baslik")</span>
     <span class="continue"><a href="#about"><i class="fa fa-angle-down"></i></a></span>
   </div>
@@ -44,5 +45,8 @@
 </footer>
 
     <script src="~/js/landingPage.js" asp-append-version="true"></script>
+    <script>
+        document.querySelector(".container").classList.remove("mt-4")
+    </script><
 </body>
 </html>

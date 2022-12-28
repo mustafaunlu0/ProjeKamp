@@ -2,8 +2,11 @@
 @{
     var userList = ViewData["userList"] as List<String>;
     var size = userList.Count;
-}
-<!DOCTYPE html>
+
+    DateTime dateTime = DateTime.Parse(Model.PostDate);
+
+  
+}<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -169,6 +172,12 @@
     </a>
 
     
+
+
+
+
+
+
      <!-- Bootstrap core JavaScript-->
      <script src="~/vendor/jquery/jquery.min.js"></script>
      <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

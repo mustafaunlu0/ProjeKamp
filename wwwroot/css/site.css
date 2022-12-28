@@ -21,3 +21,23 @@ body {
     background: aqua;
 
 }
+
+.navbar-nav > .active {
+    background: #4e73dfad;
+    transition: 1s;
+    border-radius: 5px;
+}
+
+.nav-item > a:hover {
+    background: #4e73df36;
+    transition: 1s;
+    border-radius: 5px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}

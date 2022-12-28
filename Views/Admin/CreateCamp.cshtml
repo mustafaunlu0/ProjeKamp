@@ -54,42 +54,44 @@
               <form asp-action="CreateCamp" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="row">
+                <div class="col-12">
             <div class="form-group">
                 <label asp-for="PostName" class="control-label"></label>
-                <input asp-for="PostName" class="form-control" />
+                <input asp-for="PostName" class="form-control" required/>
                 <span asp-validation-for="PostName" class="text-danger"></span>
+            </div>
             </div>
             <div class="col-6">
             <div class="form-group">
                 <label for="city">İl</label>
-                  <select asp-for="PostCity" id="city" class="form-control mb-3"></select>
+                  <select asp-for="PostCity" id="Iller" class="form-control mb-3" required></select>
                   <span asp-validation-for="PostCity" class="text-danger"></span>
             </div>
             </div>
              <div class="col-6">
             <div class="form-group">
                 <label for="district">İlçe</label>
-                  <select  asp-for="PostCounty" id="district" class="form-control mb-3"></select>
+                  <select  asp-for="PostCounty" id="Ilceler" disabled="disabled" class="form-control mb-3" required></select>
                   <span asp-validation-for="PostCounty" class="text-danger"></span>
             </div>
             </div>
             <div class="col-6">
             <div class="form-group">
                 <label asp-for="PostDate"  class="control-label"></label>
-                <input asp-for="PostDate" type="date" class="form-control" />
+                <input asp-for="PostDate" type="date" class="form-control" required/>
                 <span asp-validation-for="PostDate" class="text-danger"></span>
             </div>
             </div>
             <div class="col-6">
             <div class="form-group">
                 <label asp-for="PostHour" class="control-label"></label>
-                <input asp-for="PostHour" type="time" class="form-control" />
+                <input asp-for="PostHour" type="time" class="form-control" required/>
                 <span asp-validation-for="PostHour" class="text-danger"></span>
             </div>
             </div>
             <div class="form-group postUri" >
                 <div class="custom-file">
-                 <input  asp-for="PostUri" class="custom-file-input" value="uri" />
+                 <input  asp-for="PostUri" class="custom-file-input" value="uri" required />
                 </div>
                 <span asp-validation-for="PostUri" class="text-danger"></span>
             </div>
@@ -97,30 +99,46 @@
             <div class="form-group">
             <label asp-validation-for="PostImage" class="control-label">Image</label>
                 <div class="custom-file">
-                 <input type="file" class="form-control-file" asp-for="PostImage">
+                 <input type="file" class="form-control-file" asp-for="PostImage" required>
                 </div>
                 <span asp-validation-for="PostImage" class="text-danger"></span>
+
+            </div>
+            </div>
+             <div class="col-5">
+            <div class="form-group">
+            <label asp-validation-for="PostMap" class="control-label">Map</label>
+                <div class="custom-file">
+                 <input type="text" class="form-control " asp-for="PostMap" required>
+                </div>
+                <span asp-validation-for="PostMap" class="text-danger"></span>
 
             </div>
             </div>
              <div class="col-12">
             <div class="form-group">
                 <label asp-for="PostContent" class="control-label"></label>
-                <textarea asp-for="PostContent"  class="form-control" rows="6"></textarea>
+                <textarea asp-for="PostContent"  class="form-control" rows="6" required></textarea>
                 <span asp-validation-for="PostContent" class="text-danger"></span>
             </div>
             </div>
+            <div class="col-12">
             <div class="form-group">
                 <label asp-for="NumberOfParticipants" class="control-label"></label>
-                <input asp-for="NumberOfParticipants" class="form-control" />
+                <input asp-for="NumberOfParticipants" class="form-control" required/>
                 <span asp-validation-for="NumberOfParticipants" class="text-danger"></span>
             </div>
+            </div>
+            <div class="col-12">
             <div class="form-group">
-                <input asp-for="AdminId" type="hidden" value="1" class="form-control" />
+                <input asp-for="AdminId" type="hidden" value="1" class="form-control" required/>
                 <span asp-validation-for="AdminId"  class="text-danger"></span>
             </div>
+            </div>
+            <div class="col-12">
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <input type="submit" value="Create" class="btn btn-success"/>
+            </div>
             </div>
             </div>
         </form>
@@ -144,7 +162,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
-
+    
     <!-- Bootstrap core JavaScript-->
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -162,6 +180,7 @@
     <script src="~/js/panel/demo/chart-area-demo.js"></script>
     <script src="~/js/panel/demo/chart-pie-demo.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
 
   </body>
 </html>
