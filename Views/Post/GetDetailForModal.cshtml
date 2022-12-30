@@ -4,6 +4,8 @@
     List<User> userForModal = ViewData["userListForModal"] as List<User>;
     User user = ViewData["userDetail"] as User;
 }
+@inject LanguageService language
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,7 +31,7 @@
         <div class="col-xl-2 col-lg-2 col-md-12">
            <div class="sidebarModal">
         <div class="sidebarTitle">
-          <h3>Katılımcı Listesi</h3>
+          <h3>@language.Getkey("liste")</h3>
         </div>
         <hr>
         <div class="sidebarCamp">
@@ -53,31 +55,31 @@
                           <div class="content">
                             <div class="row">
                               <div class="col-12">
-                                <div class="postName">Kamp Adı: <span>@postForModal.PostName</span>
+                                <div class="postName">@language.Getkey("adi"): <span>@postForModal.PostName</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postCity">Şehir: <span>@postForModal.PostCity</span>
+                                <div class="postCity">@language.Getkey("sehir"): <span>@postForModal.PostCity</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postCounty">İlçe: <span>@postForModal.PostCounty</span>
+                                <div class="postCounty">@language.Getkey("ilce"): <span>@postForModal.PostCounty</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postDate">Tarih: <span>@postForModal.PostDate</span>
+                                <div class="postDate">@language.Getkey("tarih"): <span>@postForModal.PostDate</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postHour">Saat: <span>@postForModal.PostHour</span>
+                                <div class="postHour">@language.Getkey("saat"): <span>@postForModal.PostHour</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="numberOfPartifipants"> Kontenjan: <span>@postForModal.NumberOfParticipants</span>
+                                <div class="numberOfPartifipants"> @language.Getkey("kontenjan"): <span>@postForModal.NumberOfParticipants</span>
                                 </div>
                               </div>
                               <div class="col-12">
-                                <div class="postContent">Detay: <span>@postForModal.PostContent</span>
+                                <div class="postContent">@language.Getkey("detay"): <span>@postForModal.PostContent</span>
                                 </div>
                               </div>
                             </div>
@@ -90,7 +92,7 @@
                                         <div class="hand">
                                           <div class="thumb"></div>
                                         </div>
-                                        <span>Ayrıl</span>
+                                        <span>@language.Getkey("ayril")</span>
                                         
                                   </button>
                                   </a>
@@ -100,7 +102,7 @@
                                         <div class="hand">
                                           <div class="thumb"></div>
                                         </div>
-                                        <span>Listeye Dön</span>
+                                        <span>@language.Getkey("listeyeDon")</span>
                                         
                                   </button>
                                   </a>

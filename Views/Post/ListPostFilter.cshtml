@@ -38,7 +38,7 @@
             {
                         <p><i class="fas fa-city"></i> @Html.ActionLink(item.PostCity, "Filter", "Post", new {  @class= "linkClass" ,reportID = item.PostCity }, null)
                         </p>
-                        <p> @Html.ActionLink("Şehirlere Göz Atın", "ListPost", "Post", new {  @class= "linkClass"}, null)
+                        <p> @Html.ActionLink(@language.Getkey("sehirlereGozAt"), "ListPost", "Post", new {  @class= "linkClass"}, null)
                         </p>
                         break; 
                     }
@@ -74,35 +74,43 @@
                           <span>B201210392</span>
                         </div>
                         <div class="card-body">
-                          <img src="~/Images/@item.PostUri" class="card-img-top">
+                           
+                                    @if (@result == 1)
+                                    {
+                                        <img src="~/Images/@item.PostUri" class="card-img-top" style="filter: sepia(100%) blur(2px);">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Images/@item.PostUri" class="card-img-top">
+                                    }
                           <div class="content">
                             <div class="row">
                               <div class="col-12">
-                                <div class="postName">Kamp Adı: <span>@item.PostName</span>
+                                <div class="postName">@language.Getkey("adi"): <span>@item.PostName</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postCity">Şehir: <span>@item.PostCity</span>
+                                <div class="postCity">@language.Getkey("sehir"): <span>@item.PostCity</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postCounty">İlçe: <span>@item.PostCounty</span>
+                                <div class="postCounty">@language.Getkey("ilce"): <span>@item.PostCounty</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postDate">Tarih: <span>@item.PostDate</span>
+                                <div class="postDate">@language.Getkey("tarih"): <span>@item.PostDate</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postHour">Saat: <span>@item.PostHour</span>
+                                <div class="postHour">@language.Getkey("hout"): <span>@item.PostHour</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="numberOfPartifipants"> Kontenjan: <span>@item.NumberOfParticipants</span>
+                                <div class="numberOfPartifipants"> @language.Getkey("kontenjan"): <span>@item.NumberOfParticipants</span>
                                 </div>
                               </div>
                               <div class="col-12">
-                                <div class="postContent">Detay: <span>@item.PostContent</span>
+                                <div class="postContent">@language.Getkey("detay"): <span>@item.PostContent</span>
                                 </div>
                               </div>
                             </div>
@@ -116,7 +124,7 @@
                                         <div class="hand">
                                           <div class="thumb"></div>
                                         </div>
-                                        <span>Katılmak İstiyorum</span>
+                                        <span>@language.Getkey("kampIstek")</span>
                                         
                                   </button>
                                   </a>
@@ -138,45 +146,6 @@
     </div>
 </div>
 
-        <div class="modal fade" id="dsdad" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Kmp Adı</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-3">
-              
-            <div class="sidebarModal">
-              <div class="sidebarTitle">
-                <h3>Katılımcılar</h3>
-              </div>
-              <hr>
-              <div class="sidebarCamp">
-                <p><i class="fas fa-user"></i>Yasin</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-9">
-              <h3>Kamp Alanı</h3>
-             <img src="~/Images/1f39645e-7fbb-4b76-a531-21644d1b30c2_abant.jpg" class="card-img-top">
-           <h3>Kamp Konumu</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3006.353429291548!2d29.02772287721475!3d41.104971696827064!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab5e9c526060b%3A0x23714649263bf9a9!2sEspressolab%20%C4%B0stanbul%20Teknik%20%C3%9Cniversitesi%20Ayaza%C4%9Fa!5e0!3m2!1str!2str!4v1672192218104!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Kamptan Ayrıl</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>

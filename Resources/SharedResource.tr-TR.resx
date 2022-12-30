@@ -123,6 +123,9 @@
   <data name="adi" xml:space="preserve">
     <value>Kamp Adı</value>
   </data>
+  <data name="ayril" xml:space="preserve">
+    <value>Ayrıl</value>
+  </data>
   <data name="baslik" xml:space="preserve">
     <value>Bir Kamp Macerası</value>
   </data>
@@ -141,11 +144,26 @@
   <data name="giris" xml:space="preserve">
     <value>Giriş</value>
   </data>
+  <data name="girisYap" xml:space="preserve">
+    <value>Giriş Yap</value>
+  </data>
+  <data name="girisYaparak" xml:space="preserve">
+    <value>Giriş yaparak güncel etkinlikleri görebilirsin.</value>
+  </data>
   <data name="gonderi" xml:space="preserve">
     <value>Gönderiler</value>
   </data>
+  <data name="hesap" xml:space="preserve">
+    <value>Hesabın yok mu?</value>
+  </data>
+  <data name="hesapVarmi" xml:space="preserve">
+    <value>Hesabın var mı?</value>
+  </data>
   <data name="ilce" xml:space="preserve">
     <value>İlçe</value>
+  </data>
+  <data name="kampinDogasi" xml:space="preserve">
+    <value>Kampın Doğasına Hoşgeldin</value>
   </data>
   <data name="kampIstek" xml:space="preserve">
     <value>Katılma İsteği Gönder</value>
@@ -162,11 +180,20 @@
   <data name="kayit" xml:space="preserve">
     <value>Kayıt</value>
   </data>
+  <data name="kayitOl" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
   <data name="kontenjan" xml:space="preserve">
     <value>Kontenjan</value>
   </data>
   <data name="kontenjanDoldu" xml:space="preserve">
     <value>Kontenjan Doldu</value>
+  </data>
+  <data name="liste" xml:space="preserve">
+    <value>Katılımcı Listesi</value>
+  </data>
+  <data name="listeyeDon" xml:space="preserve">
+    <value>Listeye Dön</value>
   </data>
   <data name="nedir" xml:space="preserve">
     <value>Nedir bu proje?</value>
@@ -179,6 +206,9 @@
   </data>
   <data name="sehir" xml:space="preserve">
     <value>Şehir</value>
+  </data>
+  <data name="sehirlereGozAt" xml:space="preserve">
+    <value>Şehirlere Göz Atın</value>
   </data>
   <data name="tarih" xml:space="preserve">
     <value>Tarih</value>

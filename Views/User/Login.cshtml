@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject LanguageService language
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,19 +15,19 @@
 
     <div class="form-container sign-in-container">
         <form asp-action="Login" method="post">
-            <h1>Giriş Yap</h1>
+            <h1>@language.Getkey("girisYap")</h1>
 
              <input type="email" name="email" id="email"  placeholder="somebody@example.com" required>
             <input type="password" name="key" id="key"  placeholder="Password" required>
-            <a asp-action="SignUp">Hesabın yok mu?</a>
-            <button>Giriş Yap</button>
+            <a asp-action="SignUp">@language.Getkey("hesap")</a>
+            <button>@language.Getkey("girisYap")</button>
         </form>
     </div>
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-right">
-                <h1>Kampın Doğasına Hoşgeldin!</h1>
-                <p>Giriş yaparak güncel etkinlikleri görebilirsin.</p>
+                <h1>@language.Getkey("kampinDogasi")</h1>
+                <p>@language.Getkey("girisYaparak")</p>
             </div>
         </div>
     </div>

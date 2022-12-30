@@ -123,6 +123,9 @@
   <data name="adi" xml:space="preserve">
     <value>Camp Name</value>
   </data>
+  <data name="ayril" xml:space="preserve">
+    <value>Leave</value>
+  </data>
   <data name="baslik" xml:space="preserve">
     <value>A Camping Adventure</value>
   </data>
@@ -141,11 +144,26 @@
   <data name="giris" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="girisYap" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="girisYaparak" xml:space="preserve">
+    <value>You can see current events by logging in.</value>
+  </data>
   <data name="gonderi" xml:space="preserve">
     <value>Posts</value>
   </data>
+  <data name="hesap" xml:space="preserve">
+    <value>Don't you have an account?</value>
+  </data>
+  <data name="hesapVarmi" xml:space="preserve">
+    <value>Do you have an account?</value>
+  </data>
   <data name="ilce" xml:space="preserve">
     <value>County</value>
+  </data>
+  <data name="kampinDogasi" xml:space="preserve">
+    <value>Welcome to the Nature of the Camp</value>
   </data>
   <data name="kampIstek" xml:space="preserve">
     <value>Send Request to Join</value>
@@ -162,11 +180,20 @@
   <data name="kayit" xml:space="preserve">
     <value>Sign Up</value>
   </data>
+  <data name="kayitOl" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
   <data name="kontenjan" xml:space="preserve">
     <value>Quota</value>
   </data>
   <data name="kontenjanDoldu" xml:space="preserve">
     <value>Quota is full</value>
+  </data>
+  <data name="liste" xml:space="preserve">
+    <value>Participant List</value>
+  </data>
+  <data name="listeyeDon" xml:space="preserve">
+    <value>Back to List</value>
   </data>
   <data name="nedir" xml:space="preserve">
     <value>What is this project?</value>
@@ -179,6 +206,9 @@
   </data>
   <data name="sehir" xml:space="preserve">
     <value>City</value>
+  </data>
+  <data name="sehirlereGozAt" xml:space="preserve">
+    <value>Browse Cities</value>
   </data>
   <data name="tarih" xml:space="preserve">
     <value>Date</value>

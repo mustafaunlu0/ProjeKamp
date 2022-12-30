@@ -1,4 +1,5 @@
 ﻿@model ProjeKamp.Models.User
+@inject LanguageService language
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,7 @@
 
     <div class="form-container sign-in-container">
         <form asp-action="SignUp" autocomplete="off">
-            <h1>Kayıt</h1>
+            <h1>@language.Getkey("kayit")</h1>
 
             <input asp-for="UserName" type="text"  placeholder="Ad" required>
             <span asp-validation-for="UserName" class="text-danger"></span>
@@ -33,15 +34,15 @@
             <span asp-validation-for="UserPassword" class="text-danger"></span>
 
 
-            <a asp-action="Login">Hesabın var mı?</a>
-            <button>Kayıt Ol</button>
+            <a asp-action="Login">@language.Getkey("hesapVarmi")</a>
+            <button>@language.Getkey("kayitOl")</button>
         </form>
     </div>
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-right">
-                <h1>Kampın Doğasına Hoşgeldin!</h1>
-                <p>Giriş yaparak güncel etkinlikleri görebilirsin.</p>
+                <h1>@language.Getkey("kampinDogasi")</h1>
+                <p>@language.Getkey("girisYaparak")</p>
             </div>
         </div>
     </div>

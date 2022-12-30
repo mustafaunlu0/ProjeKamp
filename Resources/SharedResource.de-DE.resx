@@ -123,6 +123,9 @@
   <data name="adi" xml:space="preserve">
     <value>Lagername</value>
   </data>
+  <data name="ayril" xml:space="preserve">
+    <value>Verlassen</value>
+  </data>
   <data name="baslik" xml:space="preserve">
     <value>Ein Camping-Abenteuer</value>
   </data>
@@ -141,11 +144,26 @@
   <data name="giris" xml:space="preserve">
     <value>Anmeldung</value>
   </data>
+  <data name="girisYap" xml:space="preserve">
+    <value>Anmeldung</value>
+  </data>
+  <data name="girisYaparak" xml:space="preserve">
+    <value>Sie können aktuelle Ereignisse sehen, indem Sie sich anmelden.</value>
+  </data>
   <data name="gonderi" xml:space="preserve">
     <value>Sendungen</value>
   </data>
+  <data name="hesap" xml:space="preserve">
+    <value>Sie haben kein Konto?</value>
+  </data>
+  <data name="hesapVarmi" xml:space="preserve">
+    <value>Hast du einen Account?</value>
+  </data>
   <data name="ilce" xml:space="preserve">
     <value>Kreis</value>
+  </data>
+  <data name="kampinDogasi" xml:space="preserve">
+    <value>Willkommen in der Natur des Camps</value>
   </data>
   <data name="kampIstek" xml:space="preserve">
     <value>Beitrittsanfrage Senden</value>
@@ -162,11 +180,20 @@
   <data name="kayit" xml:space="preserve">
     <value>Aufzeichnung</value>
   </data>
+  <data name="kayitOl" xml:space="preserve">
+    <value>Registrieren</value>
+  </data>
   <data name="kontenjan" xml:space="preserve">
     <value>Quote</value>
   </data>
   <data name="kontenjanDoldu" xml:space="preserve">
     <value>Kontingent ist voll</value>
+  </data>
+  <data name="liste" xml:space="preserve">
+    <value>Teilnehmerliste</value>
+  </data>
+  <data name="listeyeDon" xml:space="preserve">
+    <value>Zurück zu Lisa</value>
   </data>
   <data name="nedir" xml:space="preserve">
     <value>Was ist dieses Projekt?</value>
@@ -179,6 +206,9 @@
   </data>
   <data name="sehir" xml:space="preserve">
     <value>Stadt</value>
+  </data>
+  <data name="sehirlereGozAt" xml:space="preserve">
+    <value>Städte durchsuchen</value>
   </data>
   <data name="tarih" xml:space="preserve">
     <value>Datum</value>
