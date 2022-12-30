@@ -120,17 +120,41 @@
   <data name="aciklama" xml:space="preserve">
     <value>Project-Camp is a project that aims to organize camp activities for university students. It aims to make free activities by offering opportunities that are difficult to reach under current economic conditions to students through sponsors. The project leader is also a university student. If you want to join our growing family day by day, you can click the button below.</value>
   </data>
+  <data name="adi" xml:space="preserve">
+    <value>Camp Name</value>
+  </data>
   <data name="baslik" xml:space="preserve">
     <value>A Camping Adventure</value>
   </data>
   <data name="cikis" xml:space="preserve">
     <value>Log Out</value>
   </data>
+  <data name="detay" xml:space="preserve">
+    <value>Details</value>
+  </data>
   <data name="etkinlik" xml:space="preserve">
     <value>Activity</value>
   </data>
+  <data name="gecmisEtkinlik" xml:space="preserve">
+    <value>Past Activity</value>
+  </data>
   <data name="giris" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="gonderi" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="ilce" xml:space="preserve">
+    <value>County</value>
+  </data>
+  <data name="kampIstek" xml:space="preserve">
+    <value>Send Request to Join</value>
+  </data>
+  <data name="kampKatil" xml:space="preserve">
+    <value>Camps on Request</value>
+  </data>
+  <data name="kampSehir" xml:space="preserve">
+    <value>Camp Cities</value>
   </data>
   <data name="katil" xml:space="preserve">
     <value>Join us</value>
@@ -138,10 +162,25 @@
   <data name="kayit" xml:space="preserve">
     <value>Sign Up</value>
   </data>
+  <data name="kontenjan" xml:space="preserve">
+    <value>Quota</value>
+  </data>
+  <data name="kontenjanDoldu" xml:space="preserve">
+    <value>Quota is full</value>
+  </data>
   <data name="nedir" xml:space="preserve">
     <value>What is this project?</value>
   </data>
   <data name="projeKamp" xml:space="preserve">
     <value>Project-Camp</value>
+  </data>
+  <data name="saat" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="sehir" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="tarih" xml:space="preserve">
+    <value>Date</value>
   </data>
 </root>

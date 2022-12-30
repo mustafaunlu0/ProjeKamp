@@ -120,17 +120,41 @@
   <data name="aciklama" xml:space="preserve">
     <value>Project-Camp ist ein Projekt, das darauf abzielt, Camp-Aktivitäten für Universitätsstudenten zu organisieren. Es zielt darauf ab, kostenlose Aktivitäten zu ermöglichen, indem es Studenten durch Sponsoren Möglichkeiten bietet, die unter den gegenwärtigen wirtschaftlichen Bedingungen schwer zu erreichen sind. Der Projektleiter ist ebenfalls Student. Wenn Sie Tag für Tag unserer wachsenden Familie beitreten möchten, können Sie auf die Schaltfläche unten klicken.</value>
   </data>
+  <data name="adi" xml:space="preserve">
+    <value>Lagername</value>
+  </data>
   <data name="baslik" xml:space="preserve">
     <value>Ein Camping-Abenteuer</value>
   </data>
   <data name="cikis" xml:space="preserve">
     <value>Ausloggen</value>
   </data>
+  <data name="detay" xml:space="preserve">
+    <value>Detail</value>
+  </data>
   <data name="etkinlik" xml:space="preserve">
     <value>Aktivität</value>
   </data>
+  <data name="gecmisEtkinlik" xml:space="preserve">
+    <value>Vergangene Tätigkeit</value>
+  </data>
   <data name="giris" xml:space="preserve">
     <value>Anmeldung</value>
+  </data>
+  <data name="gonderi" xml:space="preserve">
+    <value>Sendungen</value>
+  </data>
+  <data name="ilce" xml:space="preserve">
+    <value>Kreis</value>
+  </data>
+  <data name="kampIstek" xml:space="preserve">
+    <value>Beitrittsanfrage Senden</value>
+  </data>
+  <data name="kampKatil" xml:space="preserve">
+    <value>Lager auf Anfrage</value>
+  </data>
+  <data name="kampSehir" xml:space="preserve">
+    <value>Lager Städte</value>
   </data>
   <data name="katil" xml:space="preserve">
     <value>Begleiten Sie uns</value>
@@ -138,10 +162,25 @@
   <data name="kayit" xml:space="preserve">
     <value>Aufzeichnung</value>
   </data>
+  <data name="kontenjan" xml:space="preserve">
+    <value>Quote</value>
+  </data>
+  <data name="kontenjanDoldu" xml:space="preserve">
+    <value>Kontingent ist voll</value>
+  </data>
   <data name="nedir" xml:space="preserve">
     <value>Was ist dieses Projekt?</value>
   </data>
   <data name="projeKamp" xml:space="preserve">
     <value>Projekt-Camp</value>
+  </data>
+  <data name="saat" xml:space="preserve">
+    <value>Stunde</value>
+  </data>
+  <data name="sehir" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="tarih" xml:space="preserve">
+    <value>Datum</value>
   </data>
 </root>

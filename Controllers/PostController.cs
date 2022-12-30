@@ -24,53 +24,58 @@ namespace ProjeKamp.Controllers
         // GET: Post
         public async Task<IActionResult> Index()
         {
+            //Kullanıcıyı Yolla
             HttpContext.Request.Cookies.TryGetValue("username", out var value);
             ViewData["username"] = value;
+
+            //Web API
             List<Post> posts=new List<Post>();
             var http=new HttpClient();
             var response= await http.GetAsync("https://localhost:7253/api/PostAPI");
             string resString = await response.Content.ReadAsStringAsync();
             posts= JsonConvert.DeserializeObject<List<Post>>(resString);
+
+
             return View(posts);
         }
         public async Task<IActionResult> ListPost()
         {
+            //Cookiden gelen username i gönder
             HttpContext.Request.Cookies.TryGetValue("username", out var value);
             ViewData["username"] = value;
 
-            //Kullanıcı postları getirme
+
+            //Kullanıcı postları getirme         
+            TempData["posts"]=KamplariGetir(value);
+
+
+            return View(await _context.Posts.OrderBy(x=> x.PostDate).ToListAsync());
+        }
+
+        public List<Post> KamplariGetir(string value)
+        {
+            //Kullanıcıyı bul ve katıldığı kampları getir
             List<Post> posts = new List<Post>();
             var user = _context.Users.Where(x => x.UserName == value).FirstOrDefault();
-            List<PostDetail> postDetail =_context.PostDetail.Where(x => x.ParticipantId == user.UserId).ToList();
-            foreach(var postDetay in postDetail)
+            List<PostDetail> postDetail = _context.PostDetail.Where(x => x.ParticipantId == user.UserId).ToList();
+            foreach (var postDetay in postDetail)
             {
                 posts.Add(_context.Posts.Where(x => x.PostId == postDetay.postId).FirstOrDefault());
             }
+            return posts;
 
-            ViewData["posts"]=posts;
-
-
-
-
-            //Date Sıralama
-            List<string> dateList = _context.Posts.Select(x => x.PostDate).ToList();
-            List<DateTime> dateList2 = new List<DateTime>();
-
-
-            //Deneme verisi
-            ViewData["postForModal"] = _context.Posts.FirstOrDefault();
-            ViewData["userListForModal"] = _context.Users.ToList();
-
-            return View(await _context.Posts.ToListAsync());
         }
+  
       
         //LINQ
         public async Task<IActionResult> ListPostFilter(string reportID)
         {
-            Console.WriteLine("reportId: " + reportID);
+            //Şehre göre post getir
+            HttpContext.Request.Cookies.TryGetValue("username", out var value);
+            TempData["posts"] = KamplariGetir(value);
+            ViewData["username"] = value;
 
             List<Post> newpost = _context.Posts.Where(x => x.PostCity == reportID).ToList();
-            Console.WriteLine("size: " + newpost.Count);
 
             return View(newpost);
 
@@ -79,19 +84,23 @@ namespace ProjeKamp.Controllers
         [HttpGet]
         public IActionResult Filter(string reportID)
         {
-            
-
+           
             return RedirectToAction("ListPostFilter",new { reportID });
            
         }
         [HttpGet]
         public IActionResult GetDetailForModal(int reportID,string username)
         {
-       
 
+            //Kullanıcıyı al
+            HttpContext.Request.Cookies.TryGetValue("username", out var value);
+            ViewData["username"] = value;
 
+            //Kullanıcıyı ve postu al
             ViewData["userDetail"] = _context.Users.Where(x => x.UserName == username).FirstOrDefault();
             ViewData["postForModal"]=_context.Posts.Where(x => x.PostId == reportID).FirstOrDefault();
+
+            //Kampa katılan kullanıcıları al
             List<PostDetail> userList=_context.PostDetail.Where(x => x.postId == reportID).ToList();
             List<User> userListForModal=new List<User>();
             foreach(var item in userList)
@@ -113,6 +122,8 @@ namespace ProjeKamp.Controllers
             HttpContext.Request.Cookies.TryGetValue("userId", out var userId);
             if (id != null && userId != null)
             {
+
+                //Kaydı yalnızca bir kere oluştur ve her kayıtta kontenjanı bir düşür
                 try
                 {
                     PostDetail postDetail = new PostDetail();
@@ -138,9 +149,7 @@ namespace ProjeKamp.Controllers
                                 }
            
                             }
-                        }
-                        Console.WriteLine("daha önce böyle bir kayıt yok");
-                        
+                        }                        
                         _context.Add(postDetail);
 
                     }
@@ -158,6 +167,7 @@ namespace ProjeKamp.Controllers
         // GET: Post/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            //Post detayları (katılan kullanıcılar ile birlikte)
             var postDetail = _context.PostDetail.ToList();
             List<User> userList = _context.Users.ToList();
             List<String> usernameList = new List<String>();
@@ -181,7 +191,6 @@ namespace ProjeKamp.Controllers
                 {
                     if (user.UserId == detail.ParticipantId && detail.postId == id)
                     {
-                        Console.WriteLine("user: " + user.UserName);
                         usernameList.Add(user.UserName.ToString());
                     }
                 }
@@ -233,47 +242,43 @@ namespace ProjeKamp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            //Post silince hem post tablosundan hem detay tablosundan sil
             if (_context.Posts == null)
             {
                 return Problem("Entity set 'CampDataContext.Posts'  is null.");
             }
             var post = await _context.Posts.FindAsync(id);
+          
             if (post != null)
             {
                 _context.Posts.Remove(post);
+            }
+
+            if(_context.PostDetail == null)
+            {
+                return Problem("Entity set 'CampDataContext.PostDetails'  is null.");
+
+            }
+            else
+            {
+                foreach(var item in _context.PostDetail)
+                {
+                    if(item.postId== id)
+                    {
+                        _context.PostDetail.Remove(item);
+
+                    }
+                }
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction("ListCamp", "Admin");
         }
 
-        public async Task<IActionResult> DeleteDetail(int? id)
-        {
-            if (id == null || _context.PostDetail == null)
-            {
-                return NotFound();
-            }
-
-            var post = await _context.PostDetail
-                .Where(m => m.ParticipantId == id).FirstOrDefaultAsync();
-            _context.PostDetail.Remove(post);
-            await _context.SaveChangesAsync();
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            return RedirectToAction("ListPost");
-        }
-
-
-
         private bool PostExists(int id)
         {
             return _context.Posts.Any(e => e.PostId == id);
         }
-
-
 
     }
 }

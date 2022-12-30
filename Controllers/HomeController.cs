@@ -10,14 +10,7 @@ namespace ProjeKamp.Controllers
     public class HomeController : Controller
     {
 
-        private readonly CampDataContext _context;
-        private readonly IWebHostEnvironment webHostEnvironment;
-
-        public HomeController(CampDataContext context, IWebHostEnvironment webContext)
-        {
-            _context = context;
-            webHostEnvironment = webContext;
-        }
+        //Dil Dsteği
         public IActionResult ChangeLanguage(string culture)
         {
             Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName,
@@ -29,11 +22,6 @@ namespace ProjeKamp.Controllers
 
 
         public IActionResult Index()
-        {
-            return View();
-        }
-        
-        public IActionResult Feed()
         {
             return View();
         }

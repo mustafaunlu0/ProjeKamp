@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Index";
     var username = ViewData["username"];
-    
+
 }
 @inject LanguageService language
 
@@ -25,16 +25,21 @@
 <body>
     <header id="headerMenu">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" asp-controller="Home" asp-action="Index"><i class="fas fa-campground"></i></a>
+  <a class="navbar-brand" ><i class="fas fa-campground"></i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+        @if(username == null){
+             <li class="nav-item">
         <a class="nav-link" asp-controller="Home" asp-action="Index">@language.Getkey("projeKamp")</a>
       </li>
+        }@if(username != null){
+                <a class="nav-link" asp-controller="Post" asp-action="ListPost">@language.Getkey("gonderi")</a>
+        }
+     
                     
                    
     </ul>
@@ -109,6 +114,7 @@
         }
     });
 
+   
     </script>
 </body>
 </html>

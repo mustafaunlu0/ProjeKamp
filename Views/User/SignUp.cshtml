@@ -20,16 +20,16 @@
         <form asp-action="SignUp" autocomplete="off">
             <h1>Kayıt</h1>
 
-            <input asp-for="UserName" type="text"  placeholder="Ad">
+            <input asp-for="UserName" type="text"  placeholder="Ad" required>
             <span asp-validation-for="UserName" class="text-danger"></span>
 
-            <input  asp-for="UserLastName" type="text"  placeholder="Soyad">
+            <input  asp-for="UserLastName" type="text"  placeholder="Soyad" required>
             <span asp-validation-for="UserLastName" class="text-danger"></span>
 
-            <input asp-for="UserEmail" type="email"   placeholder="somebody@example.com">
+            <input asp-for="UserEmail" type="email"   placeholder="somebody@example.com" required>
             <span asp-validation-for="UserEmail" class="text-danger"></span>
 
-            <input asp-for="UserPassword" type="password" placeholder="Password">
+            <input asp-for="UserPassword" type="password" placeholder="Password" required>
             <span asp-validation-for="UserPassword" class="text-danger"></span>
 
 

@@ -15,8 +15,8 @@
         <form asp-action="Login" method="post">
             <h1>Giriş Yap</h1>
 
-             <input type="email" name="email" id="email"  placeholder="somebody@example.com">
-            <input type="password" name="key" id="key"  placeholder="Password">
+             <input type="email" name="email" id="email"  placeholder="somebody@example.com" required>
+            <input type="password" name="key" id="key"  placeholder="Password" required>
             <a asp-action="SignUp">Hesabın yok mu?</a>
             <button>Giriş Yap</button>
         </form>

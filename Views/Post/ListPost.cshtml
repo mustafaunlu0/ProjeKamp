@@ -2,10 +2,11 @@
 
 @{
     ViewData["Title"] = "Index";
-    string kayit = TempData["kayit"] as string;
     var username = ViewData["username"];
-    var posts = ViewData["posts"] as List<Post>;
+    var posts = TempData["posts"] as List<Post>;
 }
+@inject LanguageService language
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,7 +31,7 @@
 
             <div class="col-2">
         <div class="cityList mb-4">
-            <h3>Kamp Yapılacak Şehirler</h3>
+            <h3>@language.Getkey("kampSehir")</h3>
             
             @foreach(var item in Model)
             {
@@ -43,7 +44,7 @@
 
         <div class="sidebar">
         <div class="sidebarTitle">
-          <h3>Katıldığım Kamplar</h3>
+          <h3>@language.Getkey("kampKatil")</h3>
         </div>
         <div class="sidebarCamp">
                        
@@ -86,49 +87,49 @@
                                     <div class="content">
                             <div class="row">
                               <div class="col-12">
-                                <div class="postName">Kamp Adı: <span>@item.PostName</span>
+                                <div class="postName">@language.Getkey("adi"): <span>@item.PostName</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postCity">Şehir: <span>@item.PostCity</span>
+                                <div class="postCity">@language.Getkey("sehir"): <span>@item.PostCity</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postCounty">İlçe: <span>@item.PostCounty</span>
+                                <div class="postCounty">@language.Getkey("ilce"): <span>@item.PostCounty</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postDate">Tarih: <span>@item.PostDate</span>
+                                <div class="postDate">@language.Getkey("tarih"): <span>@item.PostDate</span>
                                 </div>
                               </div>
                               <div class="col-6">
-                                <div class="postHour">Saat: <span>@item.PostHour</span>
+                                <div class="postHour">@language.Getkey("saat"): <span>@item.PostHour</span>
                                 </div>
                               </div>
                                             @if(item.NumberOfParticipants != 0)
                                             {
                                              <div class="col-6">
-                                            <div class="numberOfPartifipants"> Kontenjan: <span>@item.NumberOfParticipants</span>
+                                            <div class="numberOfPartifipants"> @language.Getkey("kontenjan"): <span>@item.NumberOfParticipants</span>
                                             </div>
                                                 </div>
                                             }
                                             else
                                             {
                                                  <div class="col-12">
-                                            <div class="postContent" style="color: #ad0000;font-size: 25px;">Kontenjan Doldu
+                                            <div class="postContent" style="color: #ad0000;font-size: 25px;">@language.Getkey("kontenjanDoldu")
                                             </div>
                                         </div>
                                             }
 
 
                               <div class="col-12">
-                                <div class="postContent">Detay: <span>@item.PostContent</span>
+                                <div class="postContent">@language.Getkey("detay"): <span>@item.PostContent</span>
                                 </div>
                               </div>
                                @if (@result == 1)
                                     {
                                         <div class="col-12">
-                                            <div class="postContent" style="color: #ad0000;font-size: 25px;">Süresi Doldu
+                                            <div class="postContent" style="color: #ad0000;font-size: 25px;">@language.Getkey("gecmisEtkinlik")
                                             </div>
                                         </div>
                                     }
@@ -137,10 +138,6 @@
                           </div>
                           @if(@result <= 0 ){
 
-
-
-
-   
                                         <div class="buttons mt-4">
                                       
                                                     <a asp-action="Record" asp-controller="Post" asp-route-id="@item.PostId">                                
@@ -149,7 +146,7 @@
                                                             <div class="hand">
                                                               <div class="thumb"></div>
                                                             </div>
-                                                            <span>Katılmak İsteği Gönder</span>
+                                                            <span>@language.Getkey("kampIstek")</span>
                                         
                                                       </button>
                                                       </a>
@@ -175,9 +172,15 @@
 
 
 <script>
+
 function myFunction() {
-  alert("Başarıyla kayıt olundu.")
+
+     alert("Başarıyla kayıt olundu.")
+        
+
 }
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

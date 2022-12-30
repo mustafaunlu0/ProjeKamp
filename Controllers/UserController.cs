@@ -77,6 +77,7 @@ namespace ProjeKamp.Controllers
                     {
                         return RedirectToAction("Index", "Admin");
                     }
+                    //Cookiler ile kullanıcıyı taşı
                     HttpContext.Response.Cookies.Append("username", item.UserName);
                     HttpContext.Response.Cookies.Append("userId", item.UserId.ToString());
 
@@ -86,30 +87,6 @@ namespace ProjeKamp.Controllers
             return View();
         }
 
-        // GET: User
-        public async Task<IActionResult> Index()
-        {
-
-              return View(await _context.Users.ToListAsync());
-        }
-
-        // GET: User/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Users == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return View(user);
-        }
 
 
   
@@ -202,10 +179,12 @@ namespace ProjeKamp.Controllers
           return _context.Users.Any(e => e.UserId == id);
         }
 
+        //Cookie veri yollama
         public void SetCookie(string key, string value)
         {
             HttpContext.Response.Cookies.Append(key, value);
         }
+        //Cookie veri alma
         public string GetCookie(string key)
         {
             HttpContext.Request.Cookies.TryGetValue(key, out var value);

@@ -3,8 +3,11 @@
 @{
     ViewData["Title"] = "Index";
     var username = ViewData["username"];
-    string deneme="a";
+    var posts = TempData["posts"] as List<Post>;
+
 }
+@inject LanguageService language
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,7 +32,7 @@
 
             <div class="col-2">
         <div class="cityList mb-4">
-            <h3>Şehir</h3>
+            <h3>@language.Getkey("kampSehir")</h3>
             
             @foreach(var item in Model)
             {
@@ -44,11 +47,15 @@
 
         <div class="sidebar">
         <div class="sidebarTitle">
-          <h3>Katıldığım Kamplar</h3>
+          <h3>@language.Getkey("kampKatil")</h3>
         </div>
         <div class="sidebarCamp">
-          <p data-toggle="modal" data-target="#dsdad">Birinci Kamp</p>
-          <p> <i class="fas fa-hiking"></i>Birinci Kamp</p>
+           @foreach(var item in posts)
+                        {
+        
+                            <p data-toggle="modal" data-target=""><i class="fas fa-hiking"></i>@Html.ActionLink(item.PostName, "GetDetailForModal", "Post", new {  @class= "linkClass" ,reportID = item.PostId,username=@username }, null)</p>
+                            
+                        }
         
         </div>
       </div>
