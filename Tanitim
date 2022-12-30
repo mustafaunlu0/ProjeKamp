@@ -1,0 +1,4 @@
+		   
+ Proje Kamp
+
+Proje-Kamp, kamp ve doğa meraklılarına hedef alan bir projedir. Sistemde tanımlı olan adminler veya admin bir kamp planlar ve bunu post olarak paylaşır. Sistemdeki kayıtlı kullanıcılar bu postu görür ve katılma isteği gönderir. Etkinlik için kontanjan dolduğunda admin katılma isteği gönderen kullanıcılara ilgili postu detaylandırarak bir mail atar (otobüsün nereden kalkacağı veya alana karavan girip giremeyeceği gibi). Kullanıcı için geliştirilmiş özellikler de mevcuttur. Bunlar illere göre kampları sıralama, katıldığı kampları görüntüleme, kamplara hangi kullanıcıların katılacağını görüntülüme ve kampın yapılacağı alanın harita bilgisini gözlemleyebilmedir.
